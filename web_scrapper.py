@@ -54,6 +54,7 @@ class WebScrapper:
         print('source of item is : ' + source)
         
         product_description = self.get_description()
+        print(product_description)
         
         results_amazon = 1
         results_walmart = 1
