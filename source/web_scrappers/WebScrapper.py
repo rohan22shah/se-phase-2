@@ -11,6 +11,11 @@ sys.path.append(os.path.abspath('../../../'))
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 import FetchDescription
+import WebScrapper_Amazon
+import WebScrapper_Bjs
+#import WebScrapper_Costco
+import WebScrapper_Ebay
+import WebScrapper_Walmart
 
 class WebScrapper:
     
@@ -23,7 +28,7 @@ class WebScrapper:
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
         return driver
 
-    def check_source(self):
+    def get_description(self):
         if 'walmart' in self.product_link:
             source = 'walmart'
             fd = FetchDescription(source)
@@ -50,17 +55,16 @@ class WebScrapper:
         return description
     
     def call_scrapper(self):
-        source = self.check_source()
-        print('source of item is : ' + source)
-        
         product_description = self.get_description()
         print(product_description)
         
-        results_amazon = 1
-        results_walmart = 1
-        results_ebay = 1
+        driver = self.get_driver()
+        
+        results_amazon = WebScrapper_Amazon(driver,product_description).extract_item_amazon()
+        results_walmart = WebScrapper_Walmart(driver,product_description).extract_item_walmart()
+        results_ebay = WebScrapper_Ebay(driver,product_description).extract_item_ebay()
         results_costco = 1
-        results_bjs = 1
+        results_bjs = WebScrapper_Bjs(driver,product_description).extract_item_bjs()
         
         return [results_amazon,results_walmart,results_ebay,results_costco,results_bjs]
         
