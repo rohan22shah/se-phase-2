@@ -26,8 +26,8 @@ class WebScrapper_Amazon():
     	results=[]
     	try:
     		url = self.get_url_amazon()
-    		driver = self.driver.get(url)
-    		soup = BeautifulSoup(driver.page_source, 'html.parser')
+    		self.driver.get(url)
+    		soup = BeautifulSoup(self.driver.page_source, 'html.parser')
     		results = soup.find_all('div',{'data-component-type': 's-search-result'})
     	except:
     		results = []

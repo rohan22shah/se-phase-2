@@ -19,8 +19,8 @@ class WebScrapper_Bjs():
 
     def scrap_bjs(self):
         url = self.get_url_bjs()
-        driver=self.driver.get(url)
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        self.driver.get(url)
+        soup = BeautifulSoup(self.driver.page_source, 'html.parser')
         results = soup.find_all("div",{"class":"each-section"})
         return results
 

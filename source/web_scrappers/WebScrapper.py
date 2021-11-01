@@ -10,12 +10,11 @@ import sys
 sys.path.append(os.path.abspath('../../../'))
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-import FetchDescription
-import WebScrapper_Amazon
-import WebScrapper_Bjs
-#import WebScrapper_Costco
-import WebScrapper_Ebay
-import WebScrapper_Walmart
+from FetchDescription import FetchDescription
+from WebScrapper_Amazon import WebScrapper_Amazon
+from WebScrapper_Bjs import WebScrapper_Bjs
+from WebScrapper_Ebay import WebScrapper_Ebay
+from WebScrapper_Walmart import WebScrapper_Walmart
 
 class WebScrapper:
     
@@ -31,33 +30,32 @@ class WebScrapper:
     def get_description(self):
         if 'walmart' in self.product_link:
             source = 'walmart'
-            fd = FetchDescription(source)
+            fd = FetchDescription(self.product_link)
             description = fd.fetch_desc_walmart()
         elif 'amazon' in self.product_link:
             source = 'amazon'
-            fd = FetchDescription(source)
+            fd = FetchDescription(self.product_link)
             description = fd.fetch_desc_amazon()
         elif 'ebay' in self.product_link:
             source = 'ebay'
-            fd = FetchDescription(source)
+            fd = FetchDescription(self.product_link)
             description = fd.fetch_desc_ebay()
         elif 'costco' in self.product_link:
             source = 'costco'
-            fd = FetchDescription(source)
+            fd = FetchDescription(self.product_link)
             description = fd.fetch_desc_costco()
         elif 'bjs' in self.product_link:
             source= 'bjs'
-            fd = FetchDescription(source)
+            fd = FetchDescription(self.product_link)
             description = fd.fetch_desc_bjs()
         else:
             source = 'N/A'
-        
-        return description
+        if source != 'N/A':
+            return description
     
     def call_scrapper(self):
         product_description = self.get_description()
         print(product_description)
-        
         driver = self.get_driver()
         
         results_amazon = WebScrapper_Amazon(driver,product_description).extract_item_amazon()
@@ -67,4 +65,7 @@ class WebScrapper:
         results_bjs = WebScrapper_Bjs(driver,product_description).extract_item_bjs()
         
         return [results_amazon,results_walmart,results_ebay,results_costco,results_bjs]
-        
+
+link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
+ws = WebScrapper(link)
+result=ws.call_scrapper()        
