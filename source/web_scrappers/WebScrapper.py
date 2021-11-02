@@ -58,14 +58,13 @@ class WebScrapper:
         print(product_description)
         driver = self.get_driver()
         
-        results_amazon = WebScrapper_Amazon(driver,product_description).extract_item_amazon()
+        #results_amazon = WebScrapper_Amazon(driver,product_description).extract_item_amazon()
         results_walmart = WebScrapper_Walmart(driver,product_description).extract_item_walmart()
-        results_ebay = WebScrapper_Ebay(driver,product_description).extract_item_ebay()
-        results_costco = 1
-        results_bjs = WebScrapper_Bjs(driver,product_description).extract_item_bjs()
+        #results_ebay = WebScrapper_Ebay(driver,product_description).extract_item_ebay()
+        #results_bjs = WebScrapper_Bjs(driver,product_description).extract_item_bjs()
         
-        return [results_amazon,results_walmart,results_ebay,results_costco,results_bjs]
+        return results_walmart
 
-link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
+link = 'https://www.walmart.com/ip/Elizabeth-Taylor-White-Diamonds-Eau-de-Toilette-Perfume-for-Women-3-3-oz/9886285?athbdg=L1600'
 ws = WebScrapper(link)
 result=ws.call_scrapper()        

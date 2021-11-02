@@ -22,7 +22,7 @@ class WebScrapper_Walmart():
         url = self.get_url_walmart()
         self.driver.get(url)
         soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-        results = soup.find_all('div',{'class': 'flex flex-wrap w-100 flex-grow-0 flex-shrink-0 ph2 pr0-xl pl4-xl mt0-xl mt3'})
+        results = soup.find_all('div',{'class': 'h-100 pb1-xl pr4-xl pv1 ph1'})
         print('results:{}'.format(results))
         return results
 

@@ -26,8 +26,9 @@ class WebScrapper_Ebay():
         try:
             url = self.get_url_ebay()
             self.driver.get(url)
+            print(url)
             soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-            results = soup.find_all("li",{"class":"s-item s-item__sep-on-bottom s-item--watch-at-corner"})
+            results = soup.find_all("li",{"class":"s-item s-item__pl-on-bottom s-item--watch-at-corner"})
         except:
             results = []
         return results
@@ -36,6 +37,7 @@ class WebScrapper_Ebay():
         result={}
         try:
             results = self.scrap_ebay()
+            print(results)
             if len(results) == 0:
                 return result 
             item=results[0]
