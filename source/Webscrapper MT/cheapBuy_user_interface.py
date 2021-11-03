@@ -11,6 +11,8 @@ import streamlit as st
 import os
 from web_scrappers.WebScrapper import WebScrapper
 import pandas as pd
+from link_button import link_button
+
 
 # Hide Footer in Streamlit
 hide_menu_style = """
@@ -69,12 +71,31 @@ if url:
         if result is not None:
             description.append(result['description'])
             url.append(result['url'])
-            price.append(result['price'])
+            price.append(float(result['price'].strip('$').rstrip('0')))
             site.append(result['site'])
         
     if len(price):
-        dataframe = pd.DataFrame({'Site':site,  'Price':price, 'Link':url})
-        st.table(dataframe)
+        
+        def highlight_row(dataframe):
+            #copy df to new - original data are not changed
+            df = dataframe.copy()
+            minimumPrice = df['Price'].min()
+            #set by condition
+            mask = df['Price'] == minimumPrice
+            df.loc[mask, :] = 'background-color: green'
+            df.loc[~mask,:] = 'background-color: ""'
+            return df
+        
+        dataframe = pd.DataFrame({'Description': description, 'Price':price, 'Link':url}, index = site)
+        st.balloons()
+        st.subheader('RESULT')
+        st.dataframe(dataframe.style.apply(highlight_row, axis=None))
+        
+        min_value = min(price)
+        min_idx = [i for i, x in enumerate(price) if x == min_value]
+        for minimum_i in min_idx:
+            link_button(site[minimum_i], url[minimum_i])
+        
     else:
         st.error('Sorry!, there is no other website with same product')
         
