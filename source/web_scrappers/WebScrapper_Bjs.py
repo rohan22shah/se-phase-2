@@ -11,34 +11,33 @@ class WebScrapper_Bjs():
     
     def __init__(self,driver,description):
         self.driver = driver
-        self.description = description
+        if len(description)<5:
+            self.description = description
+        else:
+            self.description = ' '.join(description.split()[:5])
     
     def get_url_bjs(self):
-        template="https://www.bjs.com"+"/search/{}"
-        return template.format(self.description)
+        template = "https://www.bjs.com"+"/search/{}"
+        search_term = self.description.replace(' ','+')
+        return template.format(search_term)
 
     def scrap_bjs(self):
         url = self.get_url_bjs()
         self.driver.get(url)
         soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-        results = soup.find_all("div",{"class":"each-section"})
+        results = soup.find_all('div',{'class': 'products-list'})
         return results
 
     def extract_item_bjs(self):
-        result={}
         results = self.scrap_bjs()
+        result={}
         if len(results) == 0:
-          return result 
+            print(result) 
         item=results[1]
         atag = item.find("a",{"class":"product-link mt-xl-3 mt-xs-3 mt-md-0 mt-3"})
-        result['url'] = 'https://www.bjs.com'+atag.get('href')
-        result['description'] = item.find("h2",{"class":"product-title no-select d-none"})
-        if(result['description']==None):
-          result['description']=item.find("h2",{"class":"product-title no-select d-none d-sm-block"}).get_text().strip()
-        else:
-          result['description']=result['description'].get("title")
-        result['description']=result['description'].replace(" | safeHtml","")
-        result['price'] = item.find("div",{"class":"price-block no-select"}).get_text().strip().strip('$')
+        result['description'] = (atag.find("h2",{"class":"product-title no-select d-none"})).text
+        result['url'] = "www.bjs.com" + str(atag.get('href'))
+        result['price'] = item.find("div",{"class":"display-price"}).find('span',{'class':'price'}).text
         result['site'] = 'bjs'
         return result
 
