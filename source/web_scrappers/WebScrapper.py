@@ -62,11 +62,11 @@ class WebScrapper:
         results_amazon = WebScrapper_Amazon(driver,product_description).extract_item_amazon()
         results_walmart = WebScrapper_Walmart(driver,product_description).extract_item_walmart()
         results_ebay = WebScrapper_Ebay(driver,product_description).extract_item_ebay()
-        results_bjs = WebScrapper_Bjs(driver,product_description).extract_item_bjs()
         results_costco = WebScrapper_Costco(driver,product_description).extract_item_costco()
+        results_bjs = WebScrapper_Bjs(driver,product_description).extract_item_bjs()
+        
+        return [results_amazon,results_walmart,results_ebay,results_bjs,results_costco]
 
-        return [results_amazon,results_walmart,results_ebay,results_bjs]
-
-link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
+link = ''
 ws = WebScrapper(link)
 result=ws.call_scrapper()        
