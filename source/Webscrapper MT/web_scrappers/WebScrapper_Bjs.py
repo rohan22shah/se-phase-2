@@ -10,6 +10,10 @@ from threading import Thread
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+import sys
+sys.path.append('../../')
+from url_shortener import shorten_url
+
 class WebScrapper_Bjs(Thread):
     
     def __init__(self,description):
@@ -33,6 +37,7 @@ class WebScrapper_Bjs(Thread):
                 atag = item.find("a",{"class":"product-link mt-xl-3 mt-xs-3 mt-md-0 mt-3"})
                 self.result['description'] = (atag.find("h2",{"class":"product-title no-select d-none"})).text
                 self.result['url'] = "www.bjs.com" + str(atag.get('href'))
+                self.result['url'] = shorten_url(self.result['url'])
                 self.result['price'] = item.find("div",{"class":"display-price"}).find('span',{'class':'price'}).text
                 self.result['site'] = 'bjs'
         except:

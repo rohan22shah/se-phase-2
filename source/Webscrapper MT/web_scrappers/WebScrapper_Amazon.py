@@ -10,6 +10,10 @@ from threading import Thread
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+import sys
+sys.path.append('../../')
+from url_shortener import shorten_url
+
 class WebScrapper_Amazon(Thread):
     
     def __init__(self,description):
@@ -29,6 +33,7 @@ class WebScrapper_Amazon(Thread):
                 atag = item.h2.a
                 self.result['description'] = atag.text.strip()
                 self.result['url'] = 'https://www.amazon.com'+atag.get('href')
+                self.result['url'] = shorten_url(self.result['url'])
                 price_parent = item.find('span', 'a-price')
                 self.result['price'] = price_parent.find('span', 'a-offscreen').text
                 self.result['site'] = 'amazon'
