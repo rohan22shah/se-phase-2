@@ -11,8 +11,8 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
 import sys
-sys.path.append('../../')
-from url_shortener import shorten_url
+sys.path.append('../')
+from utils.url_shortener import shorten_url
 
 class WebScrapper_Amazon(Thread):
     

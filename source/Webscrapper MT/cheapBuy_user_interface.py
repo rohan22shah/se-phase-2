@@ -42,7 +42,7 @@ if url:
     site = []
     
     for result in results:
-        if result is not None:
+        if result!={}:
             description.append(result['description'])
             url.append(result['url'])
             price.append(float(result['price'].strip('$').rstrip('0')))
