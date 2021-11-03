@@ -16,6 +16,7 @@ from WebScrapper_Bjs import WebScrapper_Bjs
 from WebScrapper_Ebay import WebScrapper_Ebay
 from WebScrapper_Costco import WebScrapper_Costco
 from WebScrapper_Walmart import WebScrapper_Walmart
+from threading import Thread
 
 class WebScrapper:
     
@@ -59,13 +60,31 @@ class WebScrapper:
         print(product_description)
         driver = self.get_driver()
         
-        results_amazon = WebScrapper_Amazon(driver,product_description).extract_item_amazon()
-        results_walmart = WebScrapper_Walmart(driver,product_description).extract_item_walmart()
-        results_ebay = WebScrapper_Ebay(driver,product_description).extract_item_ebay()
-        results_bjs = WebScrapper_Bjs(driver,product_description).extract_item_bjs()
-        results_costco = WebScrapper_Costco(driver,product_description).extract_item_costco()
-
-        return [results_amazon,results_walmart,results_ebay,results_bjs]
+        t_amazon = WebScrapper_Amazon(driver,product_description)
+        t_walmart = WebScrapper_Walmart(driver,product_description)
+        t_ebay = WebScrapper_Ebay(driver,product_description)
+        t_bjs = WebScrapper_Bjs(driver,product_description)
+        t_costco = WebScrapper_Costco(driver,product_description)
+        
+        t_amazon.start()
+        t_walmart.start()
+        t_ebay.start()
+        t_bjs.start()
+        t_costco.start()
+        
+        t_amazon.join()
+        t_walmart.join()
+        t_ebay.join()
+        t_bjs.join()
+        t_costco.join()
+        
+        results_amazon = t_amazon.result
+        results_walmart = t_walmart.result
+        results_ebay = t_ebay.result
+        results_bjs = t_bjs.result
+        results_costco = t_costco.result
+        
+        return [results_amazon, results_walmart, results_ebay, results_bjs, results_costco]
 
 link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
 ws = WebScrapper(link)
