@@ -6,31 +6,12 @@ Created on Mon Nov  1 15:34:33 2021
 """
 
 from bs4 import BeautifulSoup
-from threading import Thread
 
-class WebScrapper_Ebay(Thread):
+class WebScrapper_Ebay():
     
     def __init__(self,driver,description):
         self.driver = driver
         self.description = description
-        self.result = None
-        super(WebScrapper_Ebay,self).__init__()
-        
-    def run(self):
-        self.result={}
-        try:
-            results = self.scrap_ebay()
-            if len(results) == 0:
-                self.result = {}
-            item=results[0]
-            atag = item.find("a",{"class":"s-item__link"})
-            self.result['description'] = item.find("h3",{"class":"s-item__title"}).get_text().strip()
-            self.result['url'] = atag.get('href')
-            self.result['price'] = item.find("span",{"class":"s-item__price"}).get_text().strip().strip('$')
-            self.result['site'] = 'ebay'
-        except:
-            self.result = {}
-        
         
     def get_url_ebay(self):
       try:
@@ -51,3 +32,20 @@ class WebScrapper_Ebay(Thread):
         except:
             results = []
         return results
+
+    def extract_item_ebay(self):
+        result={}
+        try:
+            results = self.scrap_ebay()
+            print(results)
+            if len(results) == 0:
+                return result 
+            item=results[0]
+            atag = item.find("a",{"class":"s-item__link"})
+            result['description'] = item.find("h3",{"class":"s-item__title"}).get_text().strip()
+            result['url'] = atag.get('href')
+            result['price'] = item.find("span",{"class":"s-item__price"}).get_text().strip().strip('$')
+            result['site'] = 'ebay'
+        except:
+            result = {}
+        return result
