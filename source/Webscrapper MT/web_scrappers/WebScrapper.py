@@ -83,6 +83,7 @@ class WebScrapper:
         
         return [results_amazon, results_walmart, results_ebay, results_bjs, results_costco]
 
-# link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
-# ws = WebScrapper(link)
-# result=ws.call_scrapper()        
+#link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
+#link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
+#ws = WebScrapper(link)
+#result=ws.call_scrapper()        
