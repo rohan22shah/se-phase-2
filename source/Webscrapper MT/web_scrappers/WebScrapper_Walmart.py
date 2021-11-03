@@ -10,6 +10,10 @@ from threading import Thread
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+import sys
+sys.path.append('../../')
+from url_shortener import shorten_url
+
 class WebScrapper_Walmart(Thread):
     
     def __init__(self,description):
@@ -29,6 +33,7 @@ class WebScrapper_Walmart(Thread):
                 item=results[0]
                 atag = item.find("a",{"class":"absolute w-100 h-100 z-1"})
                 self.result['description'] = (atag.find("span",{"class":"w_DJ"})).text
+                self.result['url'] = shorten_url(self.result['url'])
                 self.result['url'] = atag.get('href')
                 parent_price= item.find("div",{"class":"flex flex-wrap justify-start items-center lh-title mb2 mb1-m"})
                 self.result['price'] = parent_price.find("div", {"class":"b black f5 mr1 mr2-xl lh-copy f4-l"}).text

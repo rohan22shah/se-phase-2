@@ -17,6 +17,6 @@ body {
 </style>
 </head>
 <body onLoad="">
-<iframe src=http://brython.info/console.html id="frame" seamless="seamless" scrolling="no"></iframe>
+<iframe src="D:\GitHub\cheapBuy-phase2\se-phase-2\source\Webscrapper MT\web_scrappers\server_api.py" id="frame" seamless="seamless" scrolling="no"></iframe>
 </body>
 </html>

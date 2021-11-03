@@ -10,6 +10,10 @@ from threading import Thread
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+import sys
+sys.path.append('../../')
+from url_shortener import shorten_url
+
 class WebScrapper_Costco(Thread):
     
     def __init__(self,description):
@@ -33,6 +37,7 @@ class WebScrapper_Costco(Thread):
                 atag = item.find("span",{"class":"description"}).find('a')
                 self.result['description'] = atag.text
                 self.result['url'] = atag.get('href')
+                self.result['url'] = shorten_url(self.result['url'])
                 self.result['price'] = item.find("div",{"class":"price"}).text.strip()
                 self.result['site'] = 'costco'
         except:

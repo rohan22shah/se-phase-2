@@ -1,13 +1,17 @@
 {
   "manifest_version": 2,
 
-  "name": "Python Chrome Plugin",
-  "description": "This extension runs Python code.",
+  "name": "CheapBuy Chrome Plugin",
+  "description": "This extension gets you prices from all major e-commerce platforms.",
   "version": "1.0",
 
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_icon":{
+            "16":"icon.png",
+            "48":"icon.png",
+            "128":"icon.png"
+        },
+    "default_popup": "index.html"
   },
   "permissions": [
     "activeTab",

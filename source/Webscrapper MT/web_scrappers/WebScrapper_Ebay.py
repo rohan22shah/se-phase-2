@@ -10,6 +10,10 @@ from threading import Thread
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+import sys
+sys.path.append('../../')
+from url_shortener import shorten_url
+
 class WebScrapper_Ebay(Thread):
     
     def __init__(self,description):
@@ -30,6 +34,7 @@ class WebScrapper_Ebay(Thread):
                 atag = item.find("a",{"class":"s-item__link"})
                 self.result['description'] = item.find("h3",{"class":"s-item__title"}).get_text().strip()
                 self.result['url'] = atag.get('href')
+                self.result['url'] = shorten_url(self.result['url'])
                 self.result['price'] = item.find("span",{"class":"s-item__price"}).get_text().strip()
                 self.result['site'] = 'ebay'
         except:
