@@ -31,7 +31,7 @@ class WebScrapper_Walmart(Thread):
                 self.result['description'] = (atag.find("span",{"class":"w_DJ"})).text
                 self.result['url'] = atag.get('href')
                 parent_price= item.find("div",{"class":"flex flex-wrap justify-start items-center lh-title mb2 mb1-m"})
-                self.result['price'] = parent_price.find("div", {"class":"b black f5 mr1 mr2-xl lh-copy f4-l"}).text.strip('$')
+                self.result['price'] = parent_price.find("div", {"class":"b black f5 mr1 mr2-xl lh-copy f4-l"}).text
                 self.result['site'] = 'walmart'
         except:
             print('Walmart_results exception')

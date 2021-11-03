@@ -30,7 +30,7 @@ class WebScrapper_Ebay(Thread):
                 atag = item.find("a",{"class":"s-item__link"})
                 self.result['description'] = item.find("h3",{"class":"s-item__title"}).get_text().strip()
                 self.result['url'] = atag.get('href')
-                self.result['price'] = item.find("span",{"class":"s-item__price"}).get_text().strip().strip('$')
+                self.result['price'] = item.find("span",{"class":"s-item__price"}).get_text().strip()
                 self.result['site'] = 'ebay'
         except:
             print('Ebay_results exception')
