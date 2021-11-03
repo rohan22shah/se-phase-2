@@ -18,7 +18,7 @@ class WebScrapper_Costco(Thread):
             self.description = description
         else:
             self.description = ' '.join(description.split()[:5])
-        self.result = None
+        self.result = {}
         super(WebScrapper_Costco,self).__init__()
         
     def run(self):

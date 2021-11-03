@@ -45,7 +45,7 @@ class WebScrapper_Amazon():
     		result['description'] = atag.text.strip()
     		result['url'] = 'https://www.amazon.com'+atag.get('href')
     		price_parent = item.find('span', 'a-price')
-    		result['price'] = price_parent.find('span', 'a-offscreen').text.strip('$')
+    		result['price'] = price_parent.find('span', 'a-offscreen').text
     		result['site'] = 'amazon'
     	except:
     		result={}

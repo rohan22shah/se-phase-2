@@ -15,7 +15,7 @@ class WebScrapper_Ebay(Thread):
     def __init__(self,description):
         self.driver = self.get_driver()
         self.description = description
-        self.result = None
+        self.result = {}
         super(WebScrapper_Ebay,self).__init__()
         
     def run(self):

@@ -18,7 +18,7 @@ class WebScrapper_Bjs(Thread):
             self.description = description
         else:
             self.description = ' '.join(description.split()[:5])
-        self.result = None
+        self.result = {}
         super(WebScrapper_Bjs,self).__init__()
     
     def run(self):

@@ -15,7 +15,7 @@ class WebScrapper_Amazon(Thread):
     def __init__(self,description):
         self.driver = self.get_driver()
         self.description = description
-        self.result = None
+        self.result = {}
         super(WebScrapper_Amazon,self).__init__()
     
     def run(self):
@@ -30,7 +30,7 @@ class WebScrapper_Amazon(Thread):
                 self.result['description'] = atag.text.strip()
                 self.result['url'] = 'https://www.amazon.com'+atag.get('href')
                 price_parent = item.find('span', 'a-price')
-                self.result['price'] = price_parent.find('span', 'a-offscreen').text.strip('$')
+                self.result['price'] = price_parent.find('span', 'a-offscreen').text
                 self.result['site'] = 'amazon'
         except:
             print('Amazon_results exception')
@@ -38,7 +38,6 @@ class WebScrapper_Amazon(Thread):
 
     def get_driver(self):
         options = webdriver.ChromeOptions()
-        #options.headless = True
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
         return driver
     
