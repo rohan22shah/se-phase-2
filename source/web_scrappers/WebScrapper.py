@@ -10,12 +10,12 @@ import sys
 sys.path.append(os.path.abspath('../../../'))
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from FetchDescription import FetchDescription
-from WebScrapper_Amazon import WebScrapper_Amazon
-from WebScrapper_Bjs import WebScrapper_Bjs
-from WebScrapper_Ebay import WebScrapper_Ebay
-from WebScrapper_Costco import WebScrapper_Costco
-from WebScrapper_Walmart import WebScrapper_Walmart
+from web_scrappers.FetchDescription import FetchDescription
+from web_scrappers.WebScrapper_Amazon import WebScrapper_Amazon
+from web_scrappers.WebScrapper_Bjs import WebScrapper_Bjs
+from web_scrappers.WebScrapper_Ebay import WebScrapper_Ebay
+from web_scrappers.WebScrapper_Costco import WebScrapper_Costco
+from web_scrappers.WebScrapper_Walmart import WebScrapper_Walmart
 
 class WebScrapper:
     
@@ -67,6 +67,6 @@ class WebScrapper:
 
         return [results_amazon,results_walmart,results_ebay,results_bjs,results_costco]
 
-link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
-ws = WebScrapper(link)
-result=ws.call_scrapper()        
+#link = 'https://www.walmart.com/ip/Brita-Longlast-Water-Filter-Replacement-Reduces-Lead-2-Count/128876038'
+#ws = WebScrapper(link)
+#result=ws.call_scrapper()        

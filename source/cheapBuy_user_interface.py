@@ -9,6 +9,8 @@ Created on Mon Nov  1 14:34:03 2021
 # Import Libraries
 import streamlit as st
 import os
+from web_scrappers.WebScrapper import WebScrapper
+import pandas as pd
 
 # Hide Footer in Streamlit
 hide_menu_style = """
@@ -53,5 +55,26 @@ st.markdown(footer,unsafe_allow_html=True)
 url = st.text_input('Enter the product website link')
 
 # Pass url to method
+if url:
+    webScrapper = WebScrapper(url)
+    results = webScrapper.call_scrapper()
 
-# Use st.columns based on return values
+    # Use st.columns based on return values
+    description = []
+    url = []
+    price = []
+    site = []
+    
+    for result in results:
+        if result is not None:
+            #description.append(result['description'])
+            url.append(result['url'])
+            price.append(result['price'])
+            site.append(result['site'])
+        
+    if len(price):
+        dataframe = pd.DataFrame({'Site':site,  'Price':price, 'Link':url})
+        st.table(dataframe)
+    else:
+        st.error('Sorry!, there is no other website with same product')
+        
