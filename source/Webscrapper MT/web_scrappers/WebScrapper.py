@@ -16,7 +16,6 @@ from WebScrapper_Bjs import WebScrapper_Bjs
 from WebScrapper_Ebay import WebScrapper_Ebay
 from WebScrapper_Costco import WebScrapper_Costco
 from WebScrapper_Walmart import WebScrapper_Walmart
-from threading import Thread
 
 class WebScrapper:
     
@@ -25,7 +24,6 @@ class WebScrapper:
     
     def get_driver(self):
         options = webdriver.ChromeOptions()
-        #options.headless = True
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
         return driver
 
@@ -58,7 +56,6 @@ class WebScrapper:
     def call_scrapper(self):
         product_description = self.get_description()
         print(product_description)
-#        driver = self.get_driver()
         
         t_amazon = WebScrapper_Amazon(product_description)
         t_walmart = WebScrapper_Walmart(product_description)
