@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Tue Nov  2 15:34:14 2021
+Copyright (c) 2021 Anshul Patel
+This code is licensed under MIT license (see LICENSE.MD for details)
 
-@author: Rohan Shah
+@author: cheapBuy
 """
 from selectorlib import Extractor
 import requests 

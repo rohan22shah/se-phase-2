@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Nov  1 15:33:22 2021
+Copyright (c) 2021 Anshul Patel
+This code is licensed under MIT license (see LICENSE.MD for details)
 
-@author: Rohan Shah
+@author: cheapBuy
 """
 
 from bs4 import BeautifulSoup

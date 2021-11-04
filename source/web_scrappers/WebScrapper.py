@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 """
-Created on Mon Nov  1 14:41:54 2021
+Copyright (c) 2021 Anshul Patel
+This code is licensed under MIT license (see LICENSE.MD for details)
 
-@author: Rohan Shah
+@author: cheapBuy
 """
-
 import os
 import sys
 sys.path.append(os.path.abspath('../../../'))
