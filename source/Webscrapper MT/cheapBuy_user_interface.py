@@ -22,6 +22,59 @@ hide_menu_style = """
         """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
+
+
+# Display Image
+st.image("media/logo/cheapBuy_Banner.gif")
+
+st.write("cheapBuy provides you ease to buy any product through your favourite website's like Amazon, Walmart, Ebay, Bjs, Costco, etc, by providing prices of the same product from all different websites")
+url = st.text_input('Enter the product website link')
+
+# Pass url to method
+if url:
+    webScrapper = WebScrapper(url)
+    results = webScrapper.call_scrapper()
+
+    # Use st.columns based on return values
+    description = []
+    url = []
+    price = []
+    site = []
+    
+    for result in results:
+        if result!={}:
+            description.append(result['description'])
+            url.append(result['url'])
+            price.append(float(result['price'].strip('$').rstrip('0')))
+            site.append(result['site'])
+        
+    if len(price):
+        
+        def highlight_row(dataframe):
+            #copy df to new - original data are not changed
+            df = dataframe.copy()
+            minimumPrice = df['Price'].min()
+            #set by condition
+            mask = df['Price'] == minimumPrice
+            df.loc[mask, :] = 'background-color: lightgreen'
+            df.loc[~mask,:] = 'background-color: ""'
+            return df
+        
+        dataframe = pd.DataFrame({'Description': description, 'Price':price, 'Link':url}, index = site)
+        st.balloons()
+        st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
+        st.dataframe(dataframe.style.apply(highlight_row, axis=None))
+        st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>Visit the Website</h1>", unsafe_allow_html=True)
+        min_value = min(price)
+        min_idx = [i for i, x in enumerate(price) if x == min_value]
+        for minimum_i in min_idx:
+            link_button(site[minimum_i], url[minimum_i])
+        
+    else:
+        st.error('Sorry!, there is no other website with same product')
+        
+
+
 # Add footer to UI
 footer="""<style>
 a:link , a:visited{
@@ -39,10 +92,10 @@ text-decoration: underline;
 .footer {
 position: fixed;
 left: 0;
-bottom: 0;
+bottom: 0%;
 width: 100%;
-background-color: black;
-color: white;
+background-color: #DFFFFA;
+color: black;
 text-align: center;
 }
 </style>
@@ -54,48 +107,3 @@ text-align: center;
 """
 st.markdown(footer,unsafe_allow_html=True)
 
-url = st.text_input('Enter the product website link')
-
-# Pass url to method
-if url:
-    webScrapper = WebScrapper(url)
-    results = webScrapper.call_scrapper()
-
-    # Use st.columns based on return values
-    description = []
-    url = []
-    price = []
-    site = []
-    
-    for result in results:
-        if result is not None:
-            description.append(result['description'])
-            url.append(result['url'])
-            price.append(float(result['price'].strip('$').rstrip('0')))
-            site.append(result['site'])
-        
-    if len(price):
-        
-        def highlight_row(dataframe):
-            #copy df to new - original data are not changed
-            df = dataframe.copy()
-            minimumPrice = df['Price'].min()
-            #set by condition
-            mask = df['Price'] == minimumPrice
-            df.loc[mask, :] = 'background-color: green'
-            df.loc[~mask,:] = 'background-color: ""'
-            return df
-        
-        dataframe = pd.DataFrame({'Description': description, 'Price':price, 'Link':url}, index = site)
-        st.balloons()
-        st.subheader('RESULT')
-        st.dataframe(dataframe.style.apply(highlight_row, axis=None))
-        
-        min_value = min(price)
-        min_idx = [i for i, x in enumerate(price) if x == min_value]
-        for minimum_i in min_idx:
-            link_button(site[minimum_i], url[minimum_i])
-        
-    else:
-        st.error('Sorry!, there is no other website with same product')
-        
