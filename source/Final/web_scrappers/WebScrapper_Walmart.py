@@ -71,8 +71,8 @@ class WebScrapper_Walmart(Thread):
                 #Extract description from the atag
                 self.result['description'] = (atag.find("span",{"class":"w_DJ"})).text
                 #Get the URL for the page and shorten it
-                self.result['url'] = shorten_url(self.result['url'])
                 self.result['url'] = atag.get('href')
+                self.result['url'] = shorten_url(self.result['url'])
                 #Find the parent div containging price of the item
                 parent_price= item.find("div",{"class":"flex flex-wrap justify-start items-center lh-title mb2 mb1-m"})
                 #Find the price of the item
