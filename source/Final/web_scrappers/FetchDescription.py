@@ -5,6 +5,7 @@ This code is licensed under MIT license (see LICENSE.MD for details)
 @author: cheapBuy
 """
 
+#Import libraries
 from bs4 import BeautifulSoup
 import requests
 
