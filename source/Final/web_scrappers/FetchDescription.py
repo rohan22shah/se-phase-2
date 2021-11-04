@@ -40,6 +40,7 @@ class FetchDescription():
         product_link : str
             link of the product
         """
+        #Initialize class variables
         self.product_link = product_link
     
     def fetch_desc_walmart(self):
@@ -48,6 +49,7 @@ class FetchDescription():
         """
         description = ''
         try:
+        	#Extract description from URL for walmart
             link = self.product_link.replace("https://www.walmart.com/ip/","")
             for ch in link:
                 if(ch!="/"):
@@ -65,6 +67,7 @@ class FetchDescription():
         """
         description = ''
         try:
+        	#Extract description from URL for amazon
             link = self.product_link.replace('https://www.amazon.com/','')
             for ch in link:
                 if ch!='/':
@@ -81,6 +84,7 @@ class FetchDescription():
         Fetch description from Ebay
         """
         try:
+        	#Extract description from URL for ebay
             html =  requests.get(self.product_link)
             soup=BeautifulSoup(html.content,'html.parser')
             product = soup.find("div",{"class" : "vi-swc-lsp"}, { "id" : "itemTitle" })
@@ -95,6 +99,7 @@ class FetchDescription():
         """
         description = ''
         try:
+        	#Extract description from URL for costco
             link = self.product_link.replace("https://www.costco.com/","")
             for ch in link:
                 if(ch!="."):
@@ -112,6 +117,7 @@ class FetchDescription():
         """
         description = ''
         try:
+        	#Extract description from URL for bjs
             link = self.product_link.replace("https://www.bjs.com/product/","")
             for ch in link:
                 if(ch!="/"):
