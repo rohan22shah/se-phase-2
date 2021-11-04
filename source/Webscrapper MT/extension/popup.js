@@ -1,22 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<meta charset="iso-8859-1">
-<style>
-body {    
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 800;
-}
-
-#frame {
-    overflow: hidden;
-    width:790;
-    height:324;
-}
-</style>
-</head>
-<body onLoad="">
-<iframe src="D:\GitHub\cheapBuy-phase2\se-phase-2\source\Webscrapper MT\web_scrappers\server_api.py" id="frame" seamless="seamless" scrolling="no"></iframe>
-</body>
-</html>
+$(document).ready(function(){
+		$.getJSON('http://localho.st:5000/fetch',function(data){
+		document.write(data);
+	});
+});

@@ -5,17 +5,14 @@ Created on Mon Nov  1 14:41:54 2021
 @author: Rohan Shah
 """
 
-import os
-import sys
-sys.path.append(os.path.abspath('../../../'))
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from web_scrappers.FetchDescription import FetchDescription
-from web_scrappers.WebScrapper_Amazon import WebScrapper_Amazon
-from web_scrappers.WebScrapper_Bjs import WebScrapper_Bjs
-from web_scrappers.WebScrapper_Ebay import WebScrapper_Ebay
-from web_scrappers.WebScrapper_Costco import WebScrapper_Costco
-from web_scrappers.WebScrapper_Walmart import WebScrapper_Walmart
+from FetchDescription import FetchDescription
+from WebScrapper_Amazon import WebScrapper_Amazon
+from WebScrapper_Bjs import WebScrapper_Bjs
+from WebScrapper_Ebay import WebScrapper_Ebay
+from WebScrapper_Costco import WebScrapper_Costco
+from WebScrapper_Walmart import WebScrapper_Walmart
 
 class WebScrapper:
     
