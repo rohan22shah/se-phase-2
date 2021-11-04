@@ -107,12 +107,15 @@ class WebScrapper_Bjs(Thread):
         """ 
         Returns Scraped result
         """
-        #Call the function to get URL
-        url = self.get_url_bjs()
-        self.driver.get(url)
-        #Use BeautifulSoup to scrap the webpage
-        soup = BeautifulSoup(self.driver.page_source, 'html.parser')
-        results = soup.find_all('div',{'class': 'products-list'})
+        try:
+            #Call the function to get URL
+            url = self.get_url_bjs()
+            self.driver.get(url)
+            #Use BeautifulSoup to scrap the webpage
+            soup = BeautifulSoup(self.driver.page_source, 'html.parser')
+            results = soup.find_all('div',{'class': 'products-list'})
+        except:
+            results = []
         return results
 
         

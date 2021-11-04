@@ -107,12 +107,15 @@ class WebScrapper_Costco(Thread):
         """ 
         Returns Scraped result
         """
-        #Call the function to get URL
-        url = self.get_url_costco()
-        self.driver.get(url)
-        #Use BeautifulSoup to scrap the webpage
-        soup = BeautifulSoup(self.driver.page_source,"html.parser")
-        results = soup.find_all('div',{'class': 'product-list grid'})
+        try:
+            #Call the function to get URL
+            url = self.get_url_costco()
+            self.driver.get(url)
+            #Use BeautifulSoup to scrap the webpage
+            soup = BeautifulSoup(self.driver.page_source,"html.parser")
+            results = soup.find_all('div',{'class': 'product-list grid'})
+        except:
+            results = []
         return results
         
 
