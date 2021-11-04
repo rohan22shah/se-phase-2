@@ -111,7 +111,7 @@ pip install -r requirements.txt
 3. Fetching descirption of the user's current tab for amazon.
 4. Fetching descirption of the user's current tab for Bjs.
 5. Fetching descirption of the user's current tab for Costco.
-6. Web Scrapping various product details from amazon.
+6. Web Scrapping various product details from Amazon.
 7. Web Scrapping various product details from Ebay.
 8. Exception handling of web scrapping.
 9. Server API for web scrapping.
@@ -124,18 +124,28 @@ pip install -r requirements.txt
 1. Develop a website instead of extension.
 2. Improvement of extension UI.
 3. Highlight the cheapest option available.
-4. Improve accuracy of the product. Example : If user's current tab is having Television of a particular brand and there is a better option available at a cheaper or comparable rate than provide alternative product accordingly.
-5. Add web scrapping for other websites such as Walmart, Bjs, Costco, etc.
-6. Improve code execution speed using multithreading.
+4. Code restructuring.
+5. Improve accuracy of the product. Example : If user's current tab is having Television of a particular brand and there is a better option available at a cheaper or comparable rate than provide alternative product accordingly.
+6. Web Scrapping various product details from Walmart.
+7. Web Scrapping various product details from Costco.
+8. Web Scrapping various product details from BJs.
+9. Improve code execution speed using multithreading.
 
 
 ### PHASE-3 ⌛ <a name="Phase3"></a>
-1. Automatic deployment of server using Teraform or ansible.
-2. Add a badge on the user's current tab.
-3. Dashboard including how many user's click on the website.
-4. Email notification of the available coupon to the user.
-5. Alternate product suggestion feature.
-6. Show a avialable coupon on other shopping website.
+1. Fetching descirption of the user's current tab for Target.
+2. Fetching descirption of the user's current tab for Trader Joes.
+3. Fetching descirption of the user's current tab for Kroger.
+4. Web Scrapping various product details from Target.
+5. Web Scrapping various product details from Trader Joes.
+6. Web Scrapping various product details from Kroger.
+7. Automatic deployment of server using Teraform or ansible.
+8. Improve code execution speed using multiprocessing.
+9. Add a badge on the user's current tab.
+10. Dashboard including how many user's click on the website.
+11. Email notification of the available coupon to the user.
+12. Alternate product suggestion feature.
+13. Show a available coupon on other shopping website.
 
 
 🌟 You are all set! 🌟
