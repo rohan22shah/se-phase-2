@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Wed Nov  3 15:28:06 2021
+Copyright (c) 2021 Anshul Patel
+This code is licensed under MIT license (see LICENSE.MD for details)
 
-@author: Rohan Shah
+@author: cheapBuy
 """
 
 import json
