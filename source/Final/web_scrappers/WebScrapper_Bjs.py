@@ -15,8 +15,34 @@ sys.path.append('../')
 from source.utils.url_shortener import shorten_url
 
 class WebScrapper_Bjs(Thread):
+    """
+    Main class used to scrape results from BJs
     
+    ...
+
+    Attributes
+    ----------
+    description : str
+        description of the product
+        
+    Methods
+    -------
+    run:
+        Threaded method to execute subclasses
+    get_driver:
+        Returns Chrome Driver
+    get_url_bjs:
+        Returns bjs URL
+    scrap_bjs:
+        Returns Scraped result
+    """
     def __init__(self,description):
+        """
+        Parameters
+        ----------
+        description : str
+            description of the product
+        """
         self.driver = self.get_driver()
         if len(description)<5:
             self.description = description
@@ -26,6 +52,9 @@ class WebScrapper_Bjs(Thread):
         super(WebScrapper_Bjs,self).__init__()
     
     def run(self):
+        """ 
+        Returns final result
+        """
         try:
             results = self.scrap_bjs()
             self.result={}
@@ -45,17 +74,26 @@ class WebScrapper_Bjs(Thread):
             self.result={}
             
     def get_driver(self):
+        """ 
+        Returns Chrome Driver
+        """
         options = webdriver.ChromeOptions()
         options.headless = True
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
         return driver
     
     def get_url_bjs(self):
+        """ 
+        Returns bjs URL
+        """
         template = "https://www.bjs.com"+"/search/{}"
         search_term = self.description.replace(' ','+')
         return template.format(search_term)
 
     def scrap_bjs(self):
+        """ 
+        Returns Scraped result
+        """
         url = self.get_url_bjs()
         self.driver.get(url)
         soup = BeautifulSoup(self.driver.page_source, 'html.parser')
