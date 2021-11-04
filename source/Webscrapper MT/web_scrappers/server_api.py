@@ -7,9 +7,9 @@ Created on Wed Nov  3 15:28:06 2021
 
 import json
 from WebScrapper import WebScrapper
-from flask import Flask
+import flask
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 @app.route('/fetch', methods=['GET'])
 def execute():
@@ -17,6 +17,8 @@ def execute():
     ws = WebScrapper(url)
     result = ws.call_scrapper()
     jsonStr = json.dumps(result)
-    return jsonStr
+    resp = flask.Response(jsonStr)
+    resp.headers["Access-Control-Allow-Origin"]="*"
+    return resp
 
 app.run()
