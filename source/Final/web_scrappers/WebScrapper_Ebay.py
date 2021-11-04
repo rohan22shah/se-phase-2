@@ -15,14 +15,44 @@ sys.path.append('../')
 from source.utils.url_shortener import shorten_url
 
 class WebScrapper_Ebay(Thread):
+    """
+    Main class used to scrape results from Ebay
+    
+    ...
+
+    Attributes
+    ----------
+    description : str
+        description of the product
+        
+    Methods
+    -------
+    run:
+        Threaded method to execute subclasses
+    get_driver:
+        Returns Chrome Driver
+    get_url_ebay:
+        Returns ebay URL
+    scrap_ebay:
+        Returns Scraped result
+    """
     
     def __init__(self,description):
+        """
+        Parameters
+        ----------
+        description : str
+            description of the product
+        """
         self.driver = self.get_driver()
         self.description = description
         self.result = {}
         super(WebScrapper_Ebay,self).__init__()
         
     def run(self):
+        """ 
+        Returns final result
+        """
         self.result={}
         try:
             results = self.scrap_ebay()
@@ -42,12 +72,18 @@ class WebScrapper_Ebay(Thread):
             self.result = {}
         
     def get_driver(self):
+        """ 
+        Returns Chrome Driver
+        """
         options = webdriver.ChromeOptions()
         options.headless = True
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
         return driver
     
     def get_url_ebay(self):
+        """ 
+        Returns ebay URL
+        """
       try:
           template="https://www.ebay.com"+"/sch/i.html?_from=R40&_trksid=p2380057.m570.l1313&_nkw={}"
           template=template.format(self.description)
@@ -56,6 +92,9 @@ class WebScrapper_Ebay(Thread):
       return template
 
     def scrap_ebay(self):
+        """ 
+        Returns Scraped result
+        """
         results = []
         try:
             url = self.get_url_ebay()
