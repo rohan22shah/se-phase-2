@@ -96,13 +96,13 @@ class WebScrapper_Ebay(Thread):
         """ 
         Returns ebay URL
         """
-      try:
-        #Prepare URL for given description
-          template="https://www.ebay.com"+"/sch/i.html?_from=R40&_trksid=p2380057.m570.l1313&_nkw={}"
-          template=template.format(self.description)
-      except:
-          template = ''
-      return template
+        try:
+            #Prepare URL for given description
+            template="https://www.ebay.com"+"/sch/i.html?_from=R40&_trksid=p2380057.m570.l1313&_nkw={}"
+            template=template.format(self.description)
+        except:
+            template = ''
+        return template
 
     def scrap_ebay(self):
         """ 
