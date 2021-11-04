@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 """
-Created on Thu Nov  4 00:11:19 2021
+Copyright (c) 2021 Anshul Patel
+This code is licensed under MIT license (see LICENSE.MD for details)
 
-@author: Rohan Shah
+@author: cheapBuy
 """
 
 import sys
