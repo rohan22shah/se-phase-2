@@ -94,8 +94,8 @@ position: fixed;
 left: 0;
 bottom: 0%;
 width: 100%;
-background-color: black;
-color: white;
+background-color: #DFFFFA;
+color: black;
 text-align: center;
 }
 </style>
