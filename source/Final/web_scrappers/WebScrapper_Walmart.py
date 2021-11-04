@@ -18,8 +18,34 @@ sys.path.append('../')
 
 
 class WebScrapper_Walmart(Thread):
+    """
+    Main class used to scrape results from Walmart
     
+    ...
+
+    Attributes
+    ----------
+    description : str
+        description of the product
+        
+    Methods
+    -------
+    run:
+        Threaded method to execute subclasses
+    get_driver:
+        Returns Chrome Driver
+    get_url_walmart:
+        Returns walmart URL
+    scrap_walmart:
+        Returns Scraped result
+    """
     def __init__(self,description):
+        """
+        Parameters
+        ----------
+        description : str
+            description of the product
+        """
     	#Initialize class variables
         self.driver = self.get_driver()
         self.description = description
@@ -27,6 +53,9 @@ class WebScrapper_Walmart(Thread):
         super(WebScrapper_Walmart,self).__init__()
         
     def run(self):
+        """ 
+        Returns final result
+        """
         self.result={}
         try:
         	#Get results from scrapping function
@@ -55,6 +84,9 @@ class WebScrapper_Walmart(Thread):
             self.result = {}
             
     def get_driver(self):
+        """ 
+        Returns Chrome Driver
+        """
     	#Prepare driver for scrapping
         options = webdriver.ChromeOptions()
         options.headless = True
@@ -62,12 +94,18 @@ class WebScrapper_Walmart(Thread):
         return driver
         
     def get_url_walmart(self):
+        """ 
+        Returns walmart URL
+        """
     	#Prepare URL for given description
         template = 'https://www.walmart.com/search?q={}'
         search_term = self.description.replace(' ','+')
         return template.format(search_term)
 
     def scrap_walmart(self):
+        """ 
+        Returns Scraped result
+        """
     	#Call the function to get URL
         url = self.get_url_walmart()
         #Assign the URL to driver
