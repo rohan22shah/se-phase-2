@@ -141,11 +141,12 @@ pip install -r requirements.txt
 6. Web Scrapping various product details from Kroger.
 7. Automatic deployment of server using Teraform or ansible.
 8. Improve code execution speed using multiprocessing.
-9. Add a badge on the user's current tab.
-10. Dashboard including how many user's click on the website.
-11. Email notification of the available coupon to the user.
-12. Alternate product suggestion feature.
-13. Show a available coupon on other shopping website.
+9. Improve website UI.
+10. Add a badge on the user's current tab.
+11. Dashboard including how many user's click on the website.
+12. Email notification of the available coupon to the user.
+13. Alternate product suggestion feature.
+14. Show a available coupon on other shopping website.
 
 
 🌟 You are all set! 🌟
