@@ -1,6 +1,6 @@
 
 
-[![Build Status](https://app.travis-ci.com/het-patel99/cheapBuy.svg?branch=main)](https://app.travis-ci.com/github/het-patel99/cheapBuy/builds/238891348)
+[![Build Status](https://app.travis-ci.com/rohan22shah/cheapBuy.svg?branch=main)](https://app.travis-ci.com/rohan22shah/cheapBuy)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5540375.svg)](https://doi.org/10.5281/zenodo.5540375)
 [![codecov](https://codecov.io/gh/het-patel99/cheapBuy/branch/main/graph/badge.svg?token=6D5N39DIO7)](https://codecov.io/gh/het-patel99/cheapBuy)
 ![github workflow](https://github.com/het-patel99/cheapBuy/actions/workflows/unit_test.yml/badge.svg)
@@ -55,7 +55,7 @@
 
 
 <h1 align="center">
- <img src="https://github.com/rohan22shah/se-phase-2/blob/main/source/Webscrapper%20MT/media/logo/cheapBuy_Banner.gif" />
+ <img src="https://github.com/rohan22shah/se-phase-2/blob/main/source/WebscrapperMT/media/logo/cheapBuy_Banner.gif" />
 </h1>
 
 <h1 align="center">
