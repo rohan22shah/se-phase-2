@@ -1,10 +1,9 @@
-    # -*- coding: utf-8 -*-
 """
-Created on Mon Nov  1 14:34:03 2021
+Copyright (c) 2021 Anshul Patel
+This code is licensed under MIT license (see LICENSE.MD for details)
 
-@author: patel
+@author: cheapBuy
 """
-
 
 # Import Libraries
 import streamlit as st
