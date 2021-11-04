@@ -100,8 +100,8 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/anshulp2912/scrivener" target="_blank">Scrivener</a></p>
-<p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/scrivener/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Anshul Patel</a></p>
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/rohan22shah/cheapBuy" target="_blank">cheapBuy</a></p>
+<p><a style='display: block; text-align: center;' href="https://github.com/rohan22shah/cheapBuy/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Rohan Shah</a></p>
 <p>Contributors: Anshul, Bhavya, Darshan, Pragna, Rohan</p>
 </div>
 """
