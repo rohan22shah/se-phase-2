@@ -15,14 +15,44 @@ sys.path.append('../')
 from source.utils.url_shortener import shorten_url
 
 class WebScrapper_Amazon(Thread):
+    """
+    Main class used to scrape results from Amazon
+    
+    ...
+
+    Attributes
+    ----------
+    description : str
+        description of the product
+        
+    Methods
+    -------
+    run:
+        Threaded method to execute subclasses
+    get_driver:
+        Returns Chrome Driver
+    get_url_amazon:
+        Returns amazon URL
+    scrap_amazon:
+        Returns Scraped result
+    """
     
     def __init__(self,description):
+        """
+        Parameters
+        ----------
+        description : str
+            description of the product
+        """
         self.driver = self.get_driver()
         self.description = description
         self.result = {}
         super(WebScrapper_Amazon,self).__init__()
     
     def run(self):
+        """ 
+        Returns final result
+        """
         try:
             results = self.scrap_amazon()
             if len(results) == 0:
@@ -42,12 +72,18 @@ class WebScrapper_Amazon(Thread):
             self.result={}
 
     def get_driver(self):
+        """ 
+        Returns Chrome Driver
+        """
         options = webdriver.ChromeOptions()
         options.headless = True
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
         return driver
     
     def get_url_amazon(self):
+        """ 
+        Returns amazon URL
+        """
         try:
             template = 'https://www.amazon.com'+'/s?k={}&ref=nb_sb_ss_ts-doa-p_3_5'
             search_term = self.description.replace(' ','+')
@@ -57,6 +93,9 @@ class WebScrapper_Amazon(Thread):
         return template
 
     def scrap_amazon(self):
+        """ 
+        Returns Scraped result
+        """
         results=[]
         try:
             url = self.get_url_amazon()

@@ -15,16 +15,46 @@ from source.web_scrappers.WebScrapper_Costco import WebScrapper_Costco
 from source.web_scrappers.WebScrapper_Walmart import WebScrapper_Walmart
 
 class WebScrapper:
+    """
+    Main class used to fetch results by parsing the URL
     
+    ...
+
+    Attributes
+    ----------
+    product_link : str
+        link of the product
+        
+    Methods
+    -------
+    get_driver:
+        Returns Chrome Driver
+    get_description:
+        Fetch description for all websites
+    call_scrapper:
+        Build Threads and call scrapper for all websites
+    """
     def __init__(self,product_link):
+        """
+        Parameters
+        ----------
+        product_link : str
+            link of the product
+        """
         self.product_link = product_link
     
     def get_driver(self):
+        """ 
+        Returns Chrome Driver
+        """
         options = webdriver.ChromeOptions()
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
         return driver
 
     def get_description(self):
+        """ 
+        Fetch description for all websites
+        """
         if 'walmart' in self.product_link:
             source = 'walmart'
             fd = FetchDescription(self.product_link)
@@ -51,6 +81,9 @@ class WebScrapper:
             return description
     
     def call_scrapper(self):
+        """ 
+        Build Threads and call scrapper for all websites
+        """
         product_description = self.get_description()
         print(product_description)
         
