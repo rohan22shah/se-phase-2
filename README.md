@@ -55,7 +55,7 @@
 
 
 <h1 align="center">
- <img src="https://github.com/rohan22shah/se-phase-2/blob/main/source/Webscrapper%20MT/media/logo/cheapBuy_Banner.gif" />
+ <img src="https://github.com/rohan22shah/se-phase-2/blob/main/source/WebscrapperMT/media/logo/cheapBuy_Banner.gif" />
 </h1>
 
 <h1 align="center">
