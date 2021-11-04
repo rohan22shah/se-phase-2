@@ -5,14 +5,16 @@ This code is licensed under MIT license (see LICENSE.MD for details)
 @author: cheapBuy
 """
 
+#Import libraries
 from bs4 import BeautifulSoup
 from threading import Thread
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from source.utils.url_shortener import shorten_url
 
+#Set working directory path
 import sys
 sys.path.append('../')
-from source.utils.url_shortener import shorten_url
 
 class WebScrapper_Costco(Thread):
     """
@@ -44,6 +46,7 @@ class WebScrapper_Costco(Thread):
         description : str
             description of the product
         """
+        #Initialize class variables
         self.driver = self.get_driver()
         if len(description)<5:
             self.description = description
@@ -58,17 +61,24 @@ class WebScrapper_Costco(Thread):
         """
         self.result={}
         try:
+            #Get results from scrapping function
             results = self.scrap_costco()
+            #Condition to check whether results are avialable or not
             if len(results) == 0:
                 print('Costco_results empty')
                 self.result={}
             else:                
                 item=results[0]
+                #Find teh atag containing our required item
                 atag = item.find("span",{"class":"description"}).find('a')
+                #Extract description from the atag
                 self.result['description'] = atag.text
+                #Get the URL for the page and shorten item
                 self.result['url'] = atag.get('href')
                 self.result['url'] = shorten_url(self.result['url'])
+                #Find the price of the item
                 self.result['price'] = item.find("div",{"class":"price"}).text.strip()
+                #Assign the site as costco to result
                 self.result['site'] = 'costco'
         except:
             print('Costco_results exception')
@@ -78,6 +88,7 @@ class WebScrapper_Costco(Thread):
         """ 
         Returns Chrome Driver
         """
+        #Prepare driver for scrapping
         options = webdriver.ChromeOptions()
         options.headless = True
         driver = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install())
@@ -87,6 +98,7 @@ class WebScrapper_Costco(Thread):
         """ 
         Returns costco URL
         """
+        #Prepare URL for given description
         template = "https://www.costco.com"+"/CatalogSearch?dept=All&keyword={}"
         search_term = self.description.replace(' ','+')
         return template.format(search_term)
@@ -95,8 +107,10 @@ class WebScrapper_Costco(Thread):
         """ 
         Returns Scraped result
         """
+        #Call the function to get URL
         url = self.get_url_costco()
         self.driver.get(url)
+        #Use BeautifulSoup to scrap the webpage
         soup = BeautifulSoup(self.driver.page_source,"html.parser")
         results = soup.find_all('div',{'class': 'product-list grid'})
         return results
