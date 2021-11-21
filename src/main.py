@@ -11,6 +11,8 @@ import csv
 # local imports
 import scraper.scraper as scr
 
+import nest_asyncio
+nest_asyncio.apply()
 
 # response type define
 class jsonScraps(BaseModel):
@@ -108,4 +110,4 @@ async def search_items_API(
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=5050)
