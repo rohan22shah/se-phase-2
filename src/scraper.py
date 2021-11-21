@@ -14,6 +14,8 @@ The scraper module holds functions that actually scrape the e-commerce websites
 import requests
 import formatter
 from bs4 import BeautifulSoup
+from src.url_shortener import shorten_url
+
 
 def httpsGet(URL):
     """
@@ -35,7 +37,8 @@ def searchAmazon(query):
     products = []
     for res in results:
         titles, prices, links = res.select("h2 a span"), res.select("span.a-price span"), res.select("h2 a.a-link-normal")
-        product = formatter.formatResult("amazon",  titles, prices, links)
+        link = shorten_url(links)
+        product = formatter.formatResult("amazon",  titles, prices, link)
         products.append(product)
     return products
 
