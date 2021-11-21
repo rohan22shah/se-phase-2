@@ -5,3 +5,11 @@ amazon query:hershey
 amazon query:cadbury
 amazon query:cadbury
 amazon query:cadbury
+amazon query:dell
+amazon query:dell
+amazon query:dell
+amazon query:dell
+amazon query:ketchup
+amazon query:ketchup
+amazon query:ketchup
+amazon query:ketchup
