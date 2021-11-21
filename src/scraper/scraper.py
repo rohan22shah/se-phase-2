@@ -72,7 +72,8 @@ def search(query, config):
     for res in results:
         title = res.select(config['title_indicator'])
         price = res.select(config['price_indicator'])
-        link = res.select(config['link_indicator'])
+        links = res.select(config['link_indicator'])
+        link = shorten_url(links)
         product = form.formatResult(config['site'], title, price, link)
         products.append(product)
     return products
