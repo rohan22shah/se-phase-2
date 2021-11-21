@@ -14,7 +14,7 @@ The scraper module holds functions that actually scrape the e-commerce websites
 import requests
 import formatter
 from bs4 import BeautifulSoup
-from source.utils.url_shortener import shorten_url
+from src.url_shortener import shorten_url
 
 
 def httpsGet(URL):
