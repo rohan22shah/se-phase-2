@@ -9,7 +9,7 @@ this file. If not, please write to: secheaper@gmail.com
 
 import argparse
 from tabulate import tabulate
-from scraper import scrape
+from src.scraper.scraper import scrape
 
 
 def main():
