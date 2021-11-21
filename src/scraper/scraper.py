@@ -5,6 +5,7 @@ import requests
 # local imports
 import scraper.formattr as form
 from scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
+from src.scraper.url_shortener import shorten_url
 
 
 def httpsGet(URL):
