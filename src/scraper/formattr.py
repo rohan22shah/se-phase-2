@@ -9,7 +9,7 @@ this file. If not, please write to: secheaper@gmail.com
 from datetime import datetime
 import math
 import html
-
+from scraper.url_shortener import shorten_url
 """
 The formatter module focuses on processing raw text and returning it in
 the required format.
@@ -36,8 +36,12 @@ def formatResult(website, titles, prices, links):
         "link": f'www.{website}.com{link}',
         "website": website,
     }
+    if website == 'walmart':
+        if link[0:4] == 'http':
+            product['link'] = f'{link}'
     if website == 'costco':
         product['link'] = f'{link}'
+    product['link'] = shorten_url(product['link'])
     return product
 
 

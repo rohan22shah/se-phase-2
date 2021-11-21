@@ -5,7 +5,6 @@ import requests
 # local imports
 import scraper.formattr as form
 from scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
-from scraper.url_shortener import shorten_url
 
 
 def httpsGet(URL):
@@ -73,7 +72,6 @@ def search(query, config):
         title = res.select(config['title_indicator'])
         price = res.select(config['price_indicator'])
         link = res.select(config['link_indicator'])
-        # link = shorten_url(links)
         product = form.formatResult(config['site'], title, price, link)
         products.append(product)
     return products
