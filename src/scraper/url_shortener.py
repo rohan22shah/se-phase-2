@@ -9,6 +9,8 @@ This code is licensed under MIT license (see LICENSE.MD for details)
 from pyshorteners import Shortener 
 
 def shorten_url(url):
+	if url = '' or url = None:
+		return url
     # Shorten the passed url
     s = Shortener()
     short_url = s.tinyurl.short(url)
