@@ -3,8 +3,14 @@ from bs4 import BeautifulSoup
 import requests
 
 # local imports
+#<<<<<<< HEAD
 import scraper.formattr as form
 from scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
+#=======
+#import src.scraper.formattr as form
+#from src.scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
+#from src.scraper.url_shortener import shorten_url
+#>>>>>>> 8fa8660278a2af068814f345201000d16b24596d
 
 
 def httpsGet(URL):
@@ -97,6 +103,7 @@ def scrape(args, scrapers):
     overall: list
         List of items returned from scrapers
     """
+    print('Start Time: ', datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
     query = args['search']
 
@@ -124,4 +131,6 @@ def scrape(args, scrapers):
     for sort_by in args['sort']:
         overall = form.sortList(overall, sort_by, args['des'])
 
+    print('Before return time: ', datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    
     return overall
