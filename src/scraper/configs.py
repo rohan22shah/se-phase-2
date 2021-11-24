@@ -2,9 +2,12 @@
 from datetime import datetime
 import requests
 from ebaysdk.finding import Connection
+from scraper.url_shortener import shorten_url
+#from src.scraper.url_shortener import shorten_url
 
 # local imports
-from src.scraper.formattr import formatTitle
+from scraper.formattr import formatTitle
+#from src.scraper.formattr import formatTitle
 
 # configs
 WALMART = {
@@ -97,7 +100,8 @@ def scrape_target(query):
             'timestamp': datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
             'title': formatTitle(p['item']['product_description']['title']),
             'price': '$' + str(p['price']['current_retail']),
-            'website': 'target'
+            'website': 'target',
+            'link': shorten_url(p['item']['enrichment']['buy_url'])
         }
         items.append(item)
 
@@ -136,7 +140,7 @@ def scrape_ebay(query):
             'title': formatTitle(p['title']),
             'price': '$' + p['sellingStatus']['currentPrice']['value'],
             'website': 'ebay',
-            'link': p['viewItemURL']
+            'link': shorten_url(p['viewItemURL'])
         }
         items.append(item)
 

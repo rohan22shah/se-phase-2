@@ -9,7 +9,9 @@ from pydantic import BaseModel
 import csv
 
 # local imports
-import src.scraper.scraper as scr
+#import scraper.scraper as scr
+import scraper.scraper_mt as scr
+#import src.scraper.scraper as scr
 
 import nest_asyncio
 nest_asyncio.apply()
@@ -93,7 +95,6 @@ async def search_items_API(
 
     # calling scraper.scrape to fetch results
     itemList = scr.scrape(args=args, scrapers=scrapers)
-
     if not export and len(itemList) > 0:
         file.close()
         return itemList
