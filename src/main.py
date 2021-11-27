@@ -10,7 +10,7 @@ import csv
 
 # local imports
 #import scraper.scraper as scr
-import scraper.scraper_mt as scr
+import src.scraper.scraper_mt as scr
 #import src.scraper.scraper as scr
 
 import nest_asyncio
