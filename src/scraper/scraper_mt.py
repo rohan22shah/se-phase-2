@@ -124,28 +124,42 @@ def scrape(args, scrapers):
             t_az = search(query, AMAZON)
             t_az.start()
             i += 1
+            if i == len(scraper):
+                break
         if scrapers[i] == 'bestbuy':
             t_bb = search(query, BESTBUY)
             t_bb.start()
             i += 1
+            if i == len(scraper):
+                break
         if scrapers[i] == 'costco':
             t_cc = search(query, COSTCO)
             t_cc.start()
             i += 1
+            if i == len(scraper):
+                break
         if scrapers[i] == 'ebay':
             t_eb = scrape_ebay(query)    
             t_eb.start()
             i += 1
+            if i == len(scraper):
+                break
         if scrapers[i] == 'target':
             t_tg = scrape_target(query)
             t_tg.start()
             i += 1
+            if i == len(scraper):
+                break
         if scrapers[i] == 'walmart':
             t_wm = search(query, WALMART)
             t_wm.start()
             i += 1
+            if i == len(scraper):
+                break
         else:
             i += 1
+            if i == len(scraper):
+                break
 
     i = 0
     while i < len(scrapers) :
@@ -155,38 +169,52 @@ def scrape(args, scrapers):
             for sort_by in args['sort']:
                 local = form.sortList(t_az.result, sort_by, args['des'])[:args.get('num', len(t_az.result))]
             overall.extend(local)
+            if i == len(scraper):
+                break
         if scrapers[i] == 'bestbuy':
             t_bb.join()
             i += 1
             for sort_by in args['sort']:
                 local = form.sortList(t_bb.result, sort_by, args['des'])[:args.get('num', len(t_bb.result))]
             overall.extend(local)
+            if i == len(scraper):
+                break
         if scrapers[i] == 'costco':
             t_cc.join()
             i += 1
             for sort_by in args['sort']:
                 local = form.sortList(t_cc.result, sort_by, args['des'])[:args.get('num', len(t_cc.result))]
             overall.extend(local)
+            if i == len(scraper):
+                break
         if scrapers[i] == 'ebay':
             t_eb.join()
             i += 1
             for sort_by in args['sort']:
                 local = form.sortList(t_eb.result, sort_by, args['des'])[:args.get('num', len(t_eb.result))]
             overall.extend(local)
+            if i == len(scraper):
+                break
         if scrapers[i] == 'target':
             t_tg.join()
             i += 1
             for sort_by in args['sort']:
                 local = form.sortList(t_tg.result, sort_by, args['des'])[:args.get('num', len(t_tg.result))]
             overall.extend(local)
+            if i == len(scraper):
+                break
         if scrapers[i] == 'walmart':
             t_wm.join()
             i += 1
             for sort_by in args['sort']:
                 local = form.sortList(t_wm.result, sort_by, args['des'])[:args.get('num', len(t_wm.result))]
             overall.extend(local)
+            if i == len(scraper):
+                break
         else:
             i += 1
+            if i == len(scraper):
+                break
 
 
     for sort_by in args['sort']:
