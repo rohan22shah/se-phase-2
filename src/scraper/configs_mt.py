@@ -4,8 +4,8 @@ import requests
 from ebaysdk.finding import Connection
 from threading import Thread
 
-from scraper.url_shortener import shorten_url
-#from src.scraper.url_shortener import shorten_url
+#from scraper.url_shortener import shorten_url
+from src.scraper.url_shortener import shorten_url
 
 # local imports
 #from scraper.formattr import formatTitle
