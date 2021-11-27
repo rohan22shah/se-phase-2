@@ -119,6 +119,7 @@ def scrape(args, scrapers):
 
     i = 0
     while i < len(scrapers):
+        print('************:',scrapers[i])
         if scrapers[i] == 'amazon':
             t_az = search(query, AMAZON)
             t_az.start()
