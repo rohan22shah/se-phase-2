@@ -10,9 +10,9 @@ from datetime import datetime
 import math
 import html
 #<<<<<<< HEAD
-from scraper.url_shortener import shorten_url
+#from scraper.url_shortener import shorten_url
 #=======
-#from src.scraper.url_shortener import shorten_url
+from src.scraper.url_shortener import shorten_url
 
 #>>>>>>> 8fa8660278a2af068814f345201000d16b24596d
 """
