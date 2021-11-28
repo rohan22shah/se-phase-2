@@ -5,14 +5,13 @@ from datetime import datetime
 from threading import Thread
 
 # local imports
-#<<<<<<< HEAD
 import src.scraper.formattr as form
 from src.scraper.configs_mt import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
+
 #=======
 #import src.scraper.formattr as form
 #from src.scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
 #from src.scraper.url_shortener import shorten_url
-#>>>>>>> 8fa8660278a2af068814f345201000d16b24596d
 
 class search(Thread):
     def __init__(self, query, config):
@@ -119,7 +118,6 @@ def scrape(args, scrapers):
 
     i = 0
     while i < len(scrapers):
-        print('************:',scrapers[i])
         if scrapers[i] == 'amazon':
             t_az = search(query, AMAZON)
             t_az.start()
@@ -127,6 +125,7 @@ def scrape(args, scrapers):
             if i == len(scrapers):
                 break
         if scrapers[i] == 'bestbuy':
+            print("Bestbuy")
             t_bb = search(query, BESTBUY)
             t_bb.start()
             i += 1

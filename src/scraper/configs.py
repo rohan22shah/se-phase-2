@@ -2,12 +2,12 @@
 from datetime import datetime
 import requests
 from ebaysdk.finding import Connection
-from scraper.url_shortener import shorten_url
-#from src.scraper.url_shortener import shorten_url
+#from scraper.url_shortener import shorten_url
+from src.scraper.url_shortener import shorten_url
 
 # local imports
-from scraper.formattr import formatTitle
-#from src.scraper.formattr import formatTitle
+#from scraper.formattr import formatTitle
+from src.scraper.formattr import formatTitle
 
 # configs
 WALMART = {
