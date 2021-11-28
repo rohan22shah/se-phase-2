@@ -29,13 +29,13 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 #st.image("media/cheapBuy_Banner.gif")
 
 #st.write("cheapBuy provides you ease to buy any product through your favourite website's like Amazon, Walmart, Ebay, Bjs, Costco, etc, by providing prices of the same product from all different websites")
-url = st.text_input('Enter the product item name')
-website = st.
-# Pass url to method
-if url:
-    webScrapper = WebScrapper(url)
-    results = webScrapper.call_scrapper()
+product = st.text_input('Enter the product item name')
+website = st.selectbox('Select the website',('Amazon', 'Walmart', 'Ebay', 'BestBuy', 'Target', 'Costco', 'All'))
 
+website = website.lower()
+# Pass product and website to method
+if product and website:
+    
     # Use st.columns based on return values
     description = []
     url = []
@@ -101,8 +101,8 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/anshulp2912/cheapBuy" target="_blank">cheapBuy</a></p>
-<p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/cheapBuy/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Anshul Patel</a></p>
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash" target="_blank">cheapBuy</a></p>
+<p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Anshul Patel</a></p>
 <p>Contributors: Anshul, Bhavya, Darshan, Pragna, Rohan</p>
 </div>
 """
