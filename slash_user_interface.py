@@ -10,7 +10,7 @@ import sys
 sys.path.append('../')
 import streamlit as st
 import os
-#from source.web_scrappers.WebScrapper import WebScrapper
+from src.main_func import search_items_API
 import pandas as pd
 from link_button import link_button
 
@@ -32,10 +32,18 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 product = st.text_input('Enter the product item name')
 website = st.selectbox('Select the website',('Amazon', 'Walmart', 'Ebay', 'BestBuy', 'Target', 'Costco', 'All'))
 
-website = website.lower()
+website_dict = {
+        'Amazon':'az',
+        'Walmart':'wm',
+        'Ebay':'eb',
+        'BestBuy':'bb',
+        'Target':'tg',
+        'Costco':'cc',
+        'All':'all'
+        }
 # Pass product and website to method
-if product and website:
-    
+if st.button('Search') and product and website:
+    results = search_items_API(website_dict[website], product)
     # Use st.columns based on return values
     description = []
     url = []
@@ -44,10 +52,16 @@ if product and website:
     
     for result in results:
         if result!={}:
-            description.append(result['description'])
-            url.append(result['url'])
+            description.append(result['title'])
+            url.append(result['link'])
             price.append(float(result['price'].strip('$').rstrip('0')))
-            site.append(result['site'])
+            site.append(result['website'])
+            
+            
+#            description.append(result['description'])
+#            url.append(result['url'])
+#            price.append(float(result['price'].strip('$').rstrip('0')))
+#            site.append(result['site'])
         
     if len(price):
         
