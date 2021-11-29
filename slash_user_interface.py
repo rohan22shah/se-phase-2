@@ -9,7 +9,6 @@ This code is licensed under MIT license (see LICENSE.MD for details)
 import sys
 sys.path.append('../')
 import streamlit as st
-import os
 from src.main_func import search_items_API
 import pandas as pd
 from link_button import link_button
@@ -26,9 +25,9 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 
 # Display Image
-#st.image("media/cheapBuy_Banner.gif")
+st.image("assets/slash.png")
 
-#st.write("cheapBuy provides you ease to buy any product through your favourite website's like Amazon, Walmart, Ebay, Bjs, Costco, etc, by providing prices of the same product from all different websites")
+st.write("Slash is a command line tool that scrapes the most popular e-commerce websites to get the best deals on the searched items across multiple websites")
 product = st.text_input('Enter the product item name')
 website = st.selectbox('Select the website',('Amazon', 'Walmart', 'Ebay', 'BestBuy', 'Target', 'Costco', 'All'))
 
@@ -54,15 +53,9 @@ if st.button('Search') and product and website:
         if result!={}:
             description.append(result['title'])
             url.append(result['link'])
-            price.append(float(result['price'].strip('$').rstrip('0')))
+            price.append(float(''.join(result['price'].strip('$').rstrip('0').split(','))))
             site.append(result['website'])
             
-            
-#            description.append(result['description'])
-#            url.append(result['url'])
-#            price.append(float(result['price'].strip('$').rstrip('0')))
-#            site.append(result['site'])
-        
     if len(price):
         
         def highlight_row(dataframe):
@@ -75,7 +68,7 @@ if st.button('Search') and product and website:
             df.loc[~mask,:] = 'background-color: ""'
             return df
         
-        dataframe = pd.DataFrame({'Description': description, 'Price':price, 'Link':url}, index = site)
+        dataframe = pd.DataFrame({'Description': description, 'Price':price, 'Link':url, 'Website':site})
         st.balloons()
         st.markdown("<h1 style='text-align: center; color: #1DC5A9;'>RESULT</h1>", unsafe_allow_html=True)
         st.dataframe(dataframe.style.apply(highlight_row, axis=None))
@@ -115,8 +108,8 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash" target="_blank">cheapBuy</a></p>
-<p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Anshul Patel</a></p>
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash" target="_blank">slash</a></p>
+<p><a style='display: block; text-align: center;' href="https://github.com/anshulp2912/slash/blob/main/LICENSE" target="_blank">MIT License Copyright (c) 2021 Rohan Shah</a></p>
 <p>Contributors: Anshul, Bhavya, Darshan, Pragna, Rohan</p>
 </div>
 """

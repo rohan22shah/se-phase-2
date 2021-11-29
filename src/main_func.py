@@ -6,14 +6,8 @@ Created on Mon Nov 29 00:38:27 2021
 """
 
 
-import uvicorn
 from typing import Optional
-from typing import List
-from fastapi import FastAPI
-from fastapi.responses import RedirectResponse
-from fastapi.responses import FileResponse
 from pydantic import BaseModel
-import csv
 
 # local imports
 #import scraper.scraper as scr
