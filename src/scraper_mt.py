@@ -54,7 +54,8 @@ class search(Thread):
             price = res.select(self.config['price_indicator'])
             link = res.select(self.config['link_indicator'])
             product = form.formatResult(self.config['site'], title, price, link)
-            products.append(product)
+            if product['title'] != '':
+                products.append(product)
         self.result = products
 
     def httpsGet(self, URL):

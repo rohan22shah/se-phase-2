@@ -81,7 +81,8 @@ def search(query, config):
         price = res.select(config['price_indicator'])
         link = res.select(config['link_indicator'])
         product = form.formatResult(config['site'], title, price, link)
-        products.append(product)
+        if product['title'] != '':
+            products.append(product)
     return products
 
 

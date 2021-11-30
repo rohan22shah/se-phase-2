@@ -73,3 +73,9 @@ amazon query:dell
 amazon query:dell
 amazon query:dell
 amazon query:dell
+amazon query:dell
+amazon query:dell
+amazon query:dell
+amazon query:bulb
+amazon query:laptop
+amazon query:laptop
