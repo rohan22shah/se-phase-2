@@ -13,8 +13,8 @@ import csv
 import src.scraper.scraper_mt as scr
 #import src.scraper.scraper as scr
 
-# import nest_asyncio
-# nest_asyncio.apply()
+import nest_asyncio
+nest_asyncio.apply()
 
 # response type define
 class jsonScraps(BaseModel):
