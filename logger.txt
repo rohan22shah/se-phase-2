@@ -56,3 +56,10 @@ amazon query:lenovo
 amazon query:dell
 amazon query:bulb
 amazon query:bulb
+amazon query:bulb
+amazon query:bulb
+amazon query:dell
+amazon query:ketchup
+amazon query:ketchup
+amazon query:bulb
+amazon query:dell
