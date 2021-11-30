@@ -9,7 +9,7 @@ This code is licensed under MIT license (see LICENSE.MD for details)
 import sys
 sys.path.append('../')
 import streamlit as st
-from src.main_func import search_items_API
+from src.main_streamlit import search_items_API
 import pandas as pd
 from link_button import link_button
 

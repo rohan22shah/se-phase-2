@@ -30,3 +30,4 @@ amazon query:laptop
 amazon query:lamp
 amazon query:lamp
 amazon query:lamp
+amazon query:laptop
