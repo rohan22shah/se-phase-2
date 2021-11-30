@@ -82,7 +82,7 @@ class search(Thread):
         }
         s = requests.Session()
         page = s.get(URL, headers=headers)
-        print("******************8Page Status Code:",page.status_code)
+        #print("******************8Page Status Code:",page.status_code)
         if page.status_code == 200:
             soup1 = BeautifulSoup(page.content, 'html.parser')
             return BeautifulSoup(soup1.prettify(), 'html.parser')
