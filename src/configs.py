@@ -3,7 +3,7 @@ from datetime import datetime
 import requests
 from ebaysdk.finding import Connection
 #from scraper.url_shortener import shorten_url
-from src.url_shortener import shorten_url
+#from src.url_shortener import shorten_url
 
 # local imports
 #from scraper.formattr import formatTitle
@@ -101,7 +101,8 @@ def scrape_target(query):
             'title': formatTitle(p['item']['product_description']['title']),
             'price': '$' + str(p['price']['current_retail']),
             'website': 'target',
-            'link': shorten_url(p['item']['enrichment']['buy_url'])
+            #'link': shorten_url(p['item']['enrichment']['buy_url'])
+            'link': p['item']['enrichment']['buy_url']
         }
         items.append(item)
 
@@ -140,7 +141,8 @@ def scrape_ebay(query):
             'title': formatTitle(p['title']),
             'price': '$' + p['sellingStatus']['currentPrice']['value'],
             'website': 'ebay',
-            'link': shorten_url(p['viewItemURL'])
+            #'link': shorten_url(p['viewItemURL'])
+            'link': p['viewItemURL']
         }
         items.append(item)
 

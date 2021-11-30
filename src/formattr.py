@@ -12,7 +12,7 @@ import html
 #<<<<<<< HEAD
 #from scraper.url_shortener import shorten_url
 #=======
-from src.url_shortener import shorten_url
+#from src.url_shortener import shorten_url
 
 #>>>>>>> 8fa8660278a2af068814f345201000d16b24596d
 """
@@ -54,7 +54,7 @@ def formatResult(website, titles, prices, links):
             product['link']=f'{link}'
     if website == 'costco':
         product['link'] = f'{link}'
-    product['link'] = shorten_url(product['link'])
+    #product['link'] = shorten_url(product['link'])
 #>>>>>>> 8fa8660278a2af068814f345201000d16b24596d
     return product
 

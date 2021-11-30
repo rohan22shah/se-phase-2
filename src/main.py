@@ -9,7 +9,7 @@ from pydantic import BaseModel
 import csv
 
 # local imports
-#import scraper.scraper as scr
+#import src.scraper as scr
 import src.scraper_mt as scr
 #import src.scraper.scraper as scr
 
