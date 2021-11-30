@@ -5,11 +5,11 @@ from ebaysdk.finding import Connection
 from threading import Thread
 
 #from scraper.url_shortener import shorten_url
-from src.scraper.url_shortener import shorten_url
+from src.url_shortener import shorten_url
 
 # local imports
 #from scraper.formattr import formatTitle
-from src.scraper.formattr import formatTitle
+from src.formattr import formatTitle
 
 # configs
 WALMART = {

@@ -5,8 +5,8 @@ from datetime import datetime
 from threading import Thread
 
 # local imports
-import src.scraper.formattr as form
-from src.scraper.configs_mt import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
+import src.formattr as form
+from src.configs_mt import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
 
 #=======
 #import src.scraper.formattr as form

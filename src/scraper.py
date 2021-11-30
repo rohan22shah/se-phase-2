@@ -6,8 +6,8 @@ from datetime import datetime
 
 # local imports
 #<<<<<<< HEAD
-import src.scraper.formattr as form
-from src.scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
+import src.formattr as form
+from src.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
 #=======
 #import src.scraper.formattr as form
 #from src.scraper.configs import AMAZON, WALMART, COSTCO, BESTBUY, scrape_ebay, scrape_target
